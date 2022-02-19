@@ -44,8 +44,6 @@ At this point you are free to start configuring things manually.
 
 ### Zabbix Templates
 
-For manual 
-
 [eco stake zabbix-templates ](https://github.com/eco-stake/zabbix-templates)
 
 ## Backups
@@ -71,7 +69,8 @@ validator3: 192.168.1.120
 
 ## Interested in helping out?
 
-If you are a zabbix expert (or more power user), we would love to have a working configuration that would monitor the sample topology above. Here's how to help:
+If you are a zabbix expert (or power user), we would love to have a working configuration that would monitor the sample topology above. Here's how to help:
 * Manually create a working configuration that would monitor the sample topology above.
 * Create a backup of the configuration and send it in with a pull request.
 * We will give credit to you and others can enjoy your configuration.
+* Note the backup / restore capability will be added soon.
