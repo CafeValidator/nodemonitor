@@ -1,0 +1,33 @@
+version: '2.1'
+services:
+  pg-0:
+    image: postgres:13
+    volumes:
+     - ./pgdata:/var/lib/postgresql/data:rw
+    ports:
+      - 5432
+    environment:            
+      - POSTGRES_USER=customuser
+      - POSTGRES_PASSWORD=custompassword
+  zabbix:
+    image: zabbix/zabbix-server-pgsql:ubuntu-5.0.6
+    environment:
+      - DB_SERVER_HOST=pg-0 
+      - POSTGRES_USER=customuser
+      - POSTGRES_PASSWORD=custompassword
+      - POSTGRES_DB=zabbix
+    depends_on: 
+      - pg-0
+  web:
+    image: zabbix/zabbix-web-nginx-pgsql:ubuntu-5.0.6
+    environment:
+      - DB_SERVER_HOST=pg-0 
+      - POSTGRES_USER=customuser
+      - POSTGRES_PASSWORD=custompassword
+      - ZBX_SERVER_HOST=zabbix
+      - POSTGRES_DB=zabbix       
+      - PHP_TZ=America/New_York
+    depends_on:
+      - zabbix
+    ports:
+      - 8080:8080
