@@ -25,6 +25,7 @@ Docker, docker-compose
 # How do I use this?
 
 ### Start
+edit zabbix/docker-compose.yml  and set `PHP_TZ` to your timezone.
 ```
 $cd zabbix && mkdir pgdata 
 $docker-compose up -d
